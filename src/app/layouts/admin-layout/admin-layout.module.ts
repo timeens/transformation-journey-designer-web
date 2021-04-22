@@ -9,7 +9,7 @@ import { MatRippleModule } from "@angular/material/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
-import { DashboardComponent } from "app/pages/notifications/dashboard/dashboard.component";
+import { DashboardComponent } from "app/pages/dashboard/dashboard.component";
 import { UserProfileComponent } from "app/pages/user-profile/user-profile.component";
 import { TableListComponent } from "app/pages/table-list/table-list.component";
 import { TypographyComponent } from "app/pages/typography/typography.component";

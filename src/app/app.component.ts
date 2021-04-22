@@ -6,12 +6,4 @@ import { Component } from "@angular/core";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
-  constructor(private authSer: AuthService) {}
-
-  ngOnInit() {
-    this.authSer.signIn("admin", "admin").subscribe((res) => {
-      console.log(res);
-    });
-  }
-}
+export class AppComponent {}

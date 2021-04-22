@@ -1,17 +1,15 @@
-import { WpAuthRef } from "@ngx-wordpress/core";
-import { WpAuth } from "@ngx-wordpress/core";
+import { Subscription } from "rxjs/Subscription";
 import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AuthService {
-  @WpAuth()
-  auth: WpAuthRef;
+  private _authState = new Subscription();
 
-  signIn(username: string, password: string) {
-    return this.auth.signIn(username, password);
+  public login(): Subscription {
+    return this._authState;
   }
 
-  signOut() {
-    this.auth.signOut().subscribe();
+  get authState(): Subscription {
+    return this.authState;
   }
 }
