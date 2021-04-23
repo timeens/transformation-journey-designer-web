@@ -1,5 +1,7 @@
-<div class="main-content">
-    <div class="container-fluid">
-        login
-    </div>
+<div class="container mt-5 bordered">
+    <h2>Login</h2>
+    <form [formGroup]="form" (ngSubmit)="login()">
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+        <button type="submit" class="btn btn-primary submit-button">Login</button>
+    </form>
 </div>

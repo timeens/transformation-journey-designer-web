@@ -1,15 +1,38 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
+class AuthStateModel {
+  isLoggedIn: boolean = false;
+  firstname: string = null;
+  lastname: string = null;
+  username: string = null;
+}
+
 @Injectable()
 export class AuthService {
-  private _authState = new BehaviorSubject({});
+  private _authState: AuthStateModel = new AuthStateModel();
 
-  public login(): BehaviorSubject<any> {
-    return this._authState;
+  private _authState$ = new BehaviorSubject(this._authState);
+
+  public login(username, password): BehaviorSubject<AuthStateModel> {
+    console.info(`Logging in user ${username}`);
+    this._authState.isLoggedIn = true;
+    this._authState.username = username;
+    this.emit();
+    return this._authState$;
   }
 
-  get authState(): BehaviorSubject<any> {
-    return this.authState;
+  public logout() {
+    console.info(`Logging out user ${this._authState.username}`);
+    this._authState = new AuthStateModel();
+    this.emit();
+  }
+
+  get authState(): BehaviorSubject<AuthStateModel> {
+    return this._authState$;
+  }
+
+  private emit() {
+    this._authState$.next(this._authState);
   }
 }

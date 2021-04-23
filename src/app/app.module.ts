@@ -1,3 +1,4 @@
+import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
@@ -11,6 +12,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { FormlyModule } from "@ngx-formly/core";
 import { FormlyMaterialModule } from "@ngx-formly/material";
 import { WordPressModule } from "@ngx-wordpress/core";
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -29,7 +31,7 @@ import { WordPressModule } from "@ngx-wordpress/core";
     FormlyMaterialModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

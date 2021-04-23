@@ -7,10 +7,16 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { DashboardComponent } from "app/pages/dashboard/dashboard.component";
 
 export const AdminLayoutRoutes: Routes = [
+  { path: "", redirectTo: "dashboard" },
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
   { path: "table-list", component: TableListComponent },
   { path: "typography", component: TypographyComponent },
   { path: "icons", component: IconsComponent },
   { path: "notifications", component: NotificationsComponent },
+  {
+    path: "**",
+    redirectTo: "dashboard",
+    pathMatch: "full",
+  },
 ];
