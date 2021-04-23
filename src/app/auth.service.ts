@@ -1,15 +1,15 @@
-import { Subscription } from "rxjs/Subscription";
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class AuthService {
-  private _authState = new Subscription();
+  private _authState = new BehaviorSubject({});
 
-  public login(): Subscription {
+  public login(): BehaviorSubject<any> {
     return this._authState;
   }
 
-  get authState(): Subscription {
+  get authState(): BehaviorSubject<any> {
     return this.authState;
   }
 }
