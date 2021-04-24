@@ -1,5 +1,5 @@
-import { NotifiyService } from "./services/notify.service";
 import { Router } from "@angular/router";
+import { NotifiyService } from "./services/notify.service";
 import { AuthService } from "./auth.service";
 import { Component } from "@angular/core";
 import { Title } from "@angular/platform-browser";
@@ -18,13 +18,13 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.checkAuth();
+    this.handleAuth();
     this.titleSer.setTitle("Journey Designer");
   }
 
-  private checkAuth() {
+  private handleAuth() {
     this.authSer.authState.subscribe((s) => {
-      if (!s.isLoggedIn) {
+      if (!s.isLoggedIn && this.router.url !== "/auth/login") {
         this.router.navigate(["/auth/login"]);
       } else {
         this.notifySer.showNotification("success", "Login Successfull");
