@@ -27,7 +27,7 @@ export class AppComponent {
       if (!s.isLoggedIn) {
         this.router.navigate(["/auth/login"]);
       } else {
-        this.notifySer.showNotification("success", "Login successfull");
+        this.notifySer.showNotification("success", "Login Successfull");
         this.router.navigate(["/app/dashboard"]);
       }
     });
