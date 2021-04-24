@@ -3,7 +3,24 @@ declare var $: any;
 
 @Injectable()
 export class NotifiyService {
-  showNotification(type = "info", title = "Notification", message = "") {
+  public error(title, msg = "") {
+    this.showNotification("danger", title, msg);
+  }
+  public info(title, msg = "") {
+    this.showNotification("info", title, msg);
+  }
+  public warning(title, msg = "") {
+    this.showNotification("warning", title, msg);
+  }
+  public success(title, msg = "") {
+    this.showNotification("success", title, msg);
+  }
+
+  private showNotification(
+    type = "info",
+    title = "Notification",
+    message = ""
+  ) {
     $.notify(
       {
         icon: "notifications",

@@ -1,4 +1,6 @@
+import { NotifiyService } from "./services/notify.service";
 import { Injectable } from "@angular/core";
+import { WpAuth, WpAuthRef, WpAuthState } from "@ngx-wordpress/core";
 import { BehaviorSubject } from "rxjs";
 
 class AuthStateModel {
@@ -10,16 +12,23 @@ class AuthStateModel {
 
 @Injectable()
 export class AuthService {
+  constructor(private notifySer: NotifiyService) {}
+
+  // core login procedure
   private _authState: AuthStateModel = new AuthStateModel();
   private _authState$ = new BehaviorSubject(this._authState);
 
   public async login(username, password): Promise<AuthStateModel> {
     // todo
-    console.info(`Logging in user ${username}`);
-    this._authState.isLoggedIn = true;
-    this._authState.username = username;
+    const res = await this.wpLogin(username, password);
+    if (!res.error) {
+      this._authState.isLoggedIn = true;
+      this._authState.username = username;
+      this.emit();
+    } else {
+      this.notifySer.error(res.error.message);
+    }
     // ---
-    this.emit();
     return this._authState;
   }
 
@@ -37,5 +46,15 @@ export class AuthService {
 
   private emit() {
     this._authState$.next(this._authState);
+  }
+
+  // wp
+  @WpAuth()
+  wpAuth: WpAuthRef;
+
+  private async wpLogin(u, pw): Promise<WpAuthState> {
+    const res = await this.wpAuth.signIn(u, pw).toPromise();
+
+    return res;
   }
 }
