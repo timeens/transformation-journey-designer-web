@@ -12,10 +12,10 @@ export class NotifiyService {
       },
       {
         type,
-        timer: 2000,
+        timer: 500,
         placement: {
           from: "bottom",
-          align: "right",
+          align: "left",
         },
         template:
           '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
