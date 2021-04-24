@@ -1,14 +1,20 @@
-import { NotifiyService } from "./../../services/notify.service";
 import { Router } from "@angular/router";
+import { NotifiyService } from "./../../services/notify.service";
 import { AuthService } from "../../auth.service";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 
 @Component({
   templateUrl: "./login.component.html",
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  constructor(
+    private authSer: AuthService,
+    private notifySer: NotifiyService,
+    private router: Router
+  ) {}
+
   form = new FormGroup({});
   model: any = {};
   fields: FormlyFieldConfig[] = [
@@ -33,11 +39,14 @@ export class LoginComponent implements OnInit {
     },
   ];
 
-  constructor(private authSer: AuthService) {}
+  async login() {
+    const res = await this.authSer.login(
+      this.model.username,
+      this.model.password
+    );
+    if (res.error) return this.notifySer.error(res.error.message);
 
-  ngOnInit() {}
-
-  login() {
-    this.authSer.login(this.model.username, this.model.password);
+    this.notifySer.success("Login Successfull");
+    this.router.navigate(["/app/dashboard"]);
   }
 }

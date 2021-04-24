@@ -21,8 +21,8 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authSer.authState.map((state) => {
-      return state.isLoggedIn;
+    return this.authSer.getLoggedInUser().map((state) => {
+      return !!state.id;
     });
   }
 }

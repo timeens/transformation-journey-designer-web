@@ -47,7 +47,7 @@
                 </li> -->
                 <li class="nav-item" (click)="this.authSer.logout()">
                     <a class="nav-link" href="javascript:void(0)">
-                        {{ (this.authSer.authState | async)?.username }}
+                        {{ user?.name }}
                         <i class="material-icons text-danger ml-2">logout</i>
                         <p>
                             <span class="d-lg-none d-md-block">Account</span>

@@ -23,13 +23,11 @@ export class AppComponent {
   }
 
   private handleAuth() {
+    this.authSer.validateToken();
     this.authSer.authState.subscribe((s) => {
-      if (!s.isLoggedIn && this.router.url !== "/auth/login") {
+      if (s.loading) return;
+      if (!s.loggedIn && this.router.url !== "/auth/login")
         this.router.navigate(["/auth/login"]);
-      } else {
-        this.notifySer.success("Login Successfull");
-        this.router.navigate(["/app/dashboard"]);
-      }
     });
   }
 }
