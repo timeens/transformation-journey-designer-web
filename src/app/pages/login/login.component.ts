@@ -1,3 +1,4 @@
+import { NotifiyService } from "./../../services/notify.service";
 import { Router } from "@angular/router";
 import { AuthService } from "../../auth.service";
 import { Component, OnInit } from "@angular/core";
@@ -32,13 +33,9 @@ export class LoginComponent implements OnInit {
     },
   ];
 
-  constructor(private authSer: AuthService, private router: Router) {}
+  constructor(private authSer: AuthService) {}
 
-  ngOnInit() {
-    this.authSer.authState.subscribe((s) => {
-      if (s.isLoggedIn) this.router.navigate(["/app"]);
-    });
-  }
+  ngOnInit() {}
 
   login() {
     this.authSer.login(this.model.username, this.model.password);

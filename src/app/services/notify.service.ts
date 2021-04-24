@@ -1,26 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 declare var $: any;
-@Component({
-  selector: "app-notifications",
-  templateUrl: "./notifications.component.html",
-  styleUrls: ["./notifications.component.css"],
-})
-export class NotificationsComponent implements OnInit {
-  constructor() {}
-  showNotification() {
-    const type = ["", "info", "success", "warning", "danger"];
 
-    const color = Math.floor(Math.random() * 4 + 1);
-
+@Injectable()
+export class NotifiyService {
+  showNotification(type = "info", title = "Notification", message = "") {
     $.notify(
       {
         icon: "notifications",
-        message:
-          "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer.",
+        title,
+        message,
       },
       {
-        type: type[color],
-        timer: 4000,
+        type,
+        timer: 2000,
         placement: {
           from: "bottom",
           align: "right",
@@ -39,5 +31,4 @@ export class NotificationsComponent implements OnInit {
       }
     );
   }
-  ngOnInit() {}
 }

@@ -1,3 +1,4 @@
+import { NotifiyService } from "./services/notify.service";
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -31,7 +32,7 @@ import { WordPressModule } from "@ngx-wordpress/core";
     FormlyMaterialModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, NotifiyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

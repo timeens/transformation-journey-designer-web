@@ -11,19 +11,22 @@ class AuthStateModel {
 @Injectable()
 export class AuthService {
   private _authState: AuthStateModel = new AuthStateModel();
-
   private _authState$ = new BehaviorSubject(this._authState);
 
-  public login(username, password): BehaviorSubject<AuthStateModel> {
+  public async login(username, password): Promise<AuthStateModel> {
+    // todo
     console.info(`Logging in user ${username}`);
     this._authState.isLoggedIn = true;
     this._authState.username = username;
+    // ---
     this.emit();
-    return this._authState$;
+    return this._authState;
   }
 
   public logout() {
+    // todo
     console.info(`Logging out user ${this._authState.username}`);
+    // ---
     this._authState = new AuthStateModel();
     this.emit();
   }
