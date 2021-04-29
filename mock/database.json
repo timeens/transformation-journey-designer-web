@@ -8,10 +8,10 @@
                     "question":"What is the average age of ppl working in this LOB?",
                     "options": [
                         {
-                            "label":"<20"
+                            "label":"< 20"
                         },
                         {
-                            "label":">20"
+                            "label":"> 20"
                         }
                     ]
                 }
@@ -26,10 +26,10 @@
                     "question":"What is the average age of ppl working in this program?",
                     "options": [
                         {
-                            "label":"<20"
+                            "label":"< 20"
                         },
                         {
-                            "label":">20"
+                            "label":"> 20"
                         }
                     ]
                 }
