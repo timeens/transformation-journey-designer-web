@@ -1,14 +1,14 @@
 import { Router } from "@angular/router";
-import { NotifiyService } from "./../../services/notify.service";
+import { NotifiyService } from "../../services/notify.service";
 import { AuthService } from "../../auth.service";
 import { Component } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig } from "@ngx-formly/core";
 
 @Component({
-  templateUrl: "./login.component.html",
+  templateUrl: "./login.page.component.html",
 })
-export class LoginComponent {
+export class LoginPageComponent {
   constructor(
     private authSer: AuthService,
     private notifySer: NotifiyService,

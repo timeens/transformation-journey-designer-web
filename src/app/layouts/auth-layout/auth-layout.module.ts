@@ -1,8 +1,6 @@
-import { ReactiveFormsModule } from "@angular/forms";
-import { FormlyModule } from "@ngx-formly/core";
+import { LoginPageModule } from "./../../pages/login/login.page.module";
 import { AuthLayoutComponent } from "./auth-layout.component";
 import { AuthLayoutRoutes } from "./auth-layout.routing";
-import { LoginComponent } from "./../../pages/login/login.component";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -11,9 +9,8 @@ import { CommonModule } from "@angular/common";
   imports: [
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
-    ReactiveFormsModule,
-    FormlyModule,
+    LoginPageModule,
   ],
-  declarations: [AuthLayoutComponent, LoginComponent],
+  declarations: [AuthLayoutComponent],
 })
 export class AuthLayoutModule {}
