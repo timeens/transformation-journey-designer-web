@@ -1,4 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Observable } from "rxjs";
+import { WpCollectionState } from "@ngx-wordpress/core";
+import { Component, Input, OnDestroy } from "@angular/core";
 
 @Component({
   selector: "app-table-list",
@@ -6,19 +8,19 @@ import { Component, Input } from "@angular/core";
 })
 export class TableListComponent {
   @Input()
-  title: string = "Title";
+  title: string = "";
   @Input()
   subTitle: string = "";
   @Input()
   rows: { key: string; title: string }[] = [];
   @Input()
-  data: { key: string; value: any }[] = [];
+  data: {}[] = [];
+  @Input()
+  wpColRef$: Observable<WpCollectionState<any>> = null;
 
-  getValueByKey(key) {
-    const e = this.data.find((d) => {
-      return d.key === key;
-    });
-
-    return e?.value || null;
+  getValueByKey(key, data) {
+    let v = data[key];
+    if (v?.rendered) v = v?.rendered;
+    return v || null;
   }
 }

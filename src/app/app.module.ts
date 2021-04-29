@@ -1,3 +1,5 @@
+import { environment } from "./../environments/environment";
+import { DataProviderService } from "./services/data-provider.service";
 import { NotifiyService } from "./services/notify.service";
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
@@ -24,15 +26,15 @@ import { WordPressModule } from "@ngx-wordpress/core";
     RouterModule,
     AppRoutingModule,
     WordPressModule.forRoot({
-      baseUrl: "http://localhost",
-      restUrl: "/wp-json/wp/v2/",
-      authUrl: "/wp-json/jwt-auth/v1/",
+      baseUrl: environment.wpBaseUrl,
+      restUrl: environment.wpRestUrl,
+      authUrl: environment.wpAuthUrl,
     }),
     FormlyModule.forRoot({ extras: { lazyRender: true } }),
     FormlyMaterialModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent],
-  providers: [AuthService, AuthGuard, NotifiyService],
+  providers: [AuthService, AuthGuard, NotifiyService, DataProviderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
