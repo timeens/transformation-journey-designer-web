@@ -1,7 +1,11 @@
-<div class="container mt-5 bordered">
-    <h2>Login</h2>
-    <form [formGroup]="form" (ngSubmit)="login()">
-        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-        <button type="submit" class="btn btn-primary submit-button">Login</button>
-    </form>
+<div class="card">
+    <div class="card-header card-header-danger">
+        <h4 class="card-title">Login</h4>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="login()">
+            <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+            <button type="submit" class="btn btn-primary submit-button">Login</button>
+        </form>
+    </div>
 </div>
