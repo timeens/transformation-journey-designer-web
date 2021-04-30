@@ -1,1 +1,16 @@
-decision-tree page
+<mat-horizontal-stepper linear #stepper>
+    <mat-step>
+        step 1
+    </mat-step>
+    <mat-step>
+        step 2
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
