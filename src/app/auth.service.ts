@@ -26,6 +26,7 @@ export class AuthService {
   }
 
   public logout() {
+    localStorage.clear();
     return this._wpAuth.signOut().toPromise();
   }
 }
